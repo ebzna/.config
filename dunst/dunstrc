@@ -1,0 +1,9 @@
+
+[change-appearance]
+background = "#000000"
+foreground = "#FFFFFF"
+frame_color = "#FFFFFF"
+
+[global]
+frame_width = 1
+origin = top-center

@@ -1,0 +1,25 @@
+import = [
+	"~/.config/alacritty/colors/cloud.toml",
+	"~/.config/alacritty/colors/iterm.toml",
+]
+
+[font]
+size = 6
+normal = { family = "monospace", style = "Bold" }
+
+[window]
+opacity = 0.8
+
+# [cursor]
+# style = { shape = "underline" }
+
+[shell]
+program = "/bin/zsh"
+
+[colors.cursor]
+cursor = "#55FF55"
+text = "#000000"
+
+[colors.primary]
+background = "#000000"
+
