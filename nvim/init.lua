@@ -11,16 +11,25 @@ vim.o.scl='no'	-- disable diagnostics sign column
 
 vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
+	-- base
 	use {
 		'wbthomason/packer.nvim',
-		'ellisonleao/gruvbox.nvim',
-		'folke/tokyonight.nvim',
 		'nvim-treesitter/nvim-treesitter',
 		'christoomey/vim-tmux-navigator',
 		'nvim-telescope/telescope.nvim',
 		'nvim-lua/plenary.nvim',
 	}
 
+	-- colorschemes
+	use {
+		'ellisonleao/gruvbox.nvim',
+		'folke/tokyonight.nvim',
+		'rose-pine/neovim',
+		'olivercederborg/poimandres.nvim',
+		'craftzdog/solarized-osaka.nvim',
+	}
+
+	-- lsp
 	use {
 	  'VonHeikemen/lsp-zero.nvim',
 	  branch = 'v3.x',
@@ -38,17 +47,34 @@ return require('packer').startup(function(use)
 		transparent_mode = true ,
 		italic = { strings = false, emphasis = false, comments = false, operators = false, folds = false },
 	})
-
 	require('tokyonight').setup({
 		style = 'night',
 		styles = { comments = { italic = false }, keywords = { italic = false } },
 		transparent = true,
 		on_colors = function(colors) colors.fg = "#ffffff" end
 	})
-	vim.cmd('colorscheme tokyonight')
+	require('poimandres').setup {
+		disable_background = true,
+		disable_italics = true,
+	}
+	require('rose-pine').setup({
+		styles = {
+			italic = false,
+        	transparency = true,
+    	},
+	})
+	require('solarized-osaka').setup({
+		transparent = true,
+		styles = {
+    		comments = { italic = true },
+    		keywords = { italic = true },
+		},
+	})
+
+	vim.cmd('colorscheme solarized-osaka')
 
 	require'nvim-treesitter.configs'.setup {
-	  ensure_installed = { "c", "lua", "vim", "vimdoc", "rust", "javascript", "typescript", "go", "python" },
+	  ensure_installed = { "c", "lua", "vim", "vimdoc", "javascript", "typescript", "bash" },
 	  sync_install = false,
 	  auto_install = true,
 	  ignore_install = {},
