@@ -1,17 +1,17 @@
 vim.keymap.set("n", ";p", vim.cmd.Ex)
+
 vim.o.relativenumber = true
-vim.o.tabstop = 4
-vim.o.shiftwidth = 4
+vim.o.tabstop = 4		-- tabs length displayed
+vim.o.shiftwidth = 4	-- tabs length on TAB
 vim.o.wrap = false
 vim.o.background = 'dark'
 vim.o.ignorecase = true
 vim.o.guicursor = 'n-v-c:block,i:hor1'
-vim.o.ls = 0	-- disable defualt neovim statusline
+vim.o.ls = 0	-- disable default neovim statusline
 vim.o.scl='no'	-- disable diagnostics sign column
 
 vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
-	-- base
 	use {
 		'wbthomason/packer.nvim',
 		'nvim-treesitter/nvim-treesitter',
@@ -19,8 +19,6 @@ return require('packer').startup(function(use)
 		'nvim-telescope/telescope.nvim',
 		'nvim-lua/plenary.nvim',
 	}
-
-	-- colorschemes
 	use {
 		'ellisonleao/gruvbox.nvim',
 		'folke/tokyonight.nvim',
@@ -28,8 +26,6 @@ return require('packer').startup(function(use)
 		'olivercederborg/poimandres.nvim',
 		'craftzdog/solarized-osaka.nvim',
 	}
-
-	-- lsp
 	use {
 	  'VonHeikemen/lsp-zero.nvim',
 	  branch = 'v3.x',
@@ -39,17 +35,33 @@ return require('packer').startup(function(use)
 	    {'neovim/nvim-lspconfig'},
 	    {'hrsh7th/nvim-cmp'},
 		{'hrsh7th/cmp-nvim-lsp'},
+		-- TODO: find out how to write custom snippets/per/language
+		--
+		-- https://github.com/L3MON4D3/LuaSnip
 		{'L3MON4D3/LuaSnip'},
 	  }
 	}
 
 	require('gruvbox').setup({
 		transparent_mode = true ,
-		italic = { strings = false, emphasis = false, comments = false, operators = false, folds = false },
+		italic = {
+			strings = false,
+			emphasis = false,
+			comments = false,
+			operators = false,
+			folds = false
+		},
 	})
 	require('tokyonight').setup({
 		style = 'night',
-		styles = { comments = { italic = false }, keywords = { italic = false } },
+		styles = {
+			comments = {
+				italic = false
+			},
+			keywords = {
+				italic = false
+			}
+		},
 		transparent = true,
 		on_colors = function(colors) colors.fg = "#ffffff" end
 	})
@@ -66,12 +78,15 @@ return require('packer').startup(function(use)
 	require('solarized-osaka').setup({
 		transparent = true,
 		styles = {
-    		comments = { italic = true },
-    		keywords = { italic = true },
+    		comments = {
+				italic = true
+			},
+    		keywords = {
+				italic = true
+			},
 		},
 	})
-
-	vim.cmd('colorscheme solarized-osaka')
+	vim.cmd('colorscheme gruvbox')
 
 	require'nvim-treesitter.configs'.setup {
 	  ensure_installed = { "c", "lua", "vim", "vimdoc", "javascript", "typescript", "bash" },
