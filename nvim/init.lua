@@ -18,13 +18,21 @@ return require('packer').startup(function(use)
 		'nvim-telescope/telescope.nvim',
 		'nvim-lua/plenary.nvim',
 	}
+
 	use {
 		'ellisonleao/gruvbox.nvim',
 		'folke/tokyonight.nvim',
 		'rose-pine/neovim',
 		'olivercederborg/poimandres.nvim',
 		'craftzdog/solarized-osaka.nvim',
+		'rockerBOO/boo-colorscheme-nvim',
 	}
+	-- Selecting one of ohe colorschemes
+	vim.cmd('colorscheme boo')
+
+	-- Settings null bg, have to do this manually each colorscheme change 
+	vim.cmd[[highlight Normal guibg=none]]
+
 	use {
 	  'VonHeikemen/lsp-zero.nvim',
 	  branch = 'v3.x',
@@ -40,52 +48,6 @@ return require('packer').startup(function(use)
 		{'L3MON4D3/LuaSnip'},
 	  }
 	}
-
-	require('gruvbox').setup({
-		transparent_mode = true ,
-		italic = {
-			strings = false,
-			emphasis = false,
-			comments = false,
-			operators = false,
-			folds = false
-		},
-	})
-	require('tokyonight').setup({
-		style = 'night',
-		styles = {
-			comments = {
-				italic = false
-			},
-			keywords = {
-				italic = false
-			}
-		},
-		transparent = true,
-		on_colors = function(colors) colors.fg = "#ffffff" end
-	})
-	require('poimandres').setup {
-		disable_background = true,
-		disable_italics = true,
-	}
-	require('rose-pine').setup({
-		styles = {
-			italic = false,
-        	transparency = true,
-    	},
-	})
-	require('solarized-osaka').setup({
-		transparent = true,
-		styles = {
-    		comments = {
-				italic = true
-			},
-    		keywords = {
-				italic = true
-			},
-		},
-	})
-	vim.cmd('colorscheme gruvbox')
 
 	require'nvim-treesitter.configs'.setup {
 	  ensure_installed = { "c", "lua", "vim", "vimdoc", "javascript", "typescript", "bash" },
