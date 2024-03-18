@@ -1,11 +1,12 @@
 import = [
-	"~/.config/alacritty/colors/cloud.toml",
-	"~/.config/alacritty/colors/iterm.toml",
+#	"~/.config/alacritty/colors/cloud.toml",
+#	"~/.config/alacritty/colors/iterm.toml",
+	"~/.config/alacritty/colors/monochrome.toml",
 ]
 
 [font]
-size = 6
-normal = { family = "monospace", style = "Bold" }
+size = 7
+normal = { family = "monospace", style = "Normal" }
 
 [window]
 opacity = 0.8
