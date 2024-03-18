@@ -143,9 +143,13 @@ mode "resize" {
         bindsym $mod+r mode "default"
 }
 bindsym $mod+r mode "resize"
+bindsym $mod+Shift+X exec "i3lock -c 000000"
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
+bindsym Print exec flameshot gui
+bindsym Shift+Print exec flameshot screen
 
-# Configuring window gaps, title, borders
-gaps inner 0
+# gaps inner 6
 title_align center 
 default_border pixel 1
 client.focused          #ffffff #000000 #ffffff #ffffff   #ffffff
@@ -157,20 +161,9 @@ exec $HOME/.fehbg
 
 exec_always --no-startup-id picom --config ~/.config/picom/picom.conf -b
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-exec_always setxkbmap -layout us,jp,ua,ru
+# exec_always setxkbmap -layout us,jp,ua,ru
+exec_always setxkbmap -layout us,ua
 exec_always setxkbmap -option 'grp:win_space_toggle'
 
-# Binding screen lock
-bindsym $mod+Shift+X exec "i3lock -c 000000"
-
-# Binding brightness buttons
-bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
-bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
-
-# Binding screenshot toolkit 
-bindsym Print exec flameshot gui
-bindsym Shift+Print exec flameshot screen
-
-# Enabling floating/fullscreen by default for instances
 for_window [instance = "feh"] fullscreen enable
 

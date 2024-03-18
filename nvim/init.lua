@@ -1,5 +1,4 @@
 vim.keymap.set("n", ";p", vim.cmd.Ex)
-
 vim.o.relativenumber = true
 vim.o.tabstop = 4		-- tabs length displayed
 vim.o.shiftwidth = 4	-- tabs length on TAB
@@ -148,5 +147,4 @@ return require('packer').startup(function(use)
 	    ['<C-d>'] = cmp.mapping.scroll_docs(4),
 	  })
 	})
-
 end)
